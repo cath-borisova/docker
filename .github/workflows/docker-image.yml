@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker Image Main
 
 on:
   push:
@@ -14,5 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build --file Dockerfile --.
+      name: Checkout code
+    
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      name: Build and push docker image
+      with:
+        image: //dockerhub
+        tag: PROD
+        registry:
+        dockerfile:
+        username:
+        password:
+ 
